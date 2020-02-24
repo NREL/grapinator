@@ -1,0 +1,10 @@
+#!/bin/sh
+docker run \
+-e TZ=America/Denver \
+-e GQLAPI_CRYPT_KEY='gt6mLqxBdzb75W5gen66X9DKwT9fajHtsC1cbdERTS0=' \
+-p $1:8443 \
+-v $PWD/gqlapi/resources:/opt/gqlapi_service/gqlapi/resources \
+-v $PWD/gqlapi/resources.$2/gqlapi.ini.docker:/opt/gqlapi_service/gqlapi/resources/gqlapi.ini \
+-v $PWD/gqlapi/resources.$2/schema.dct:/opt/gqlapi_service/gqlapi/resources/schema.dct \
+-v $PWD/gqlapi/resources:/certs \
+--name gqlapi_service_$2 gqlapi_service:latest 

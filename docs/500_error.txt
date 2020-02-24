@@ -1,0 +1,87 @@
+Use burpsuite community
+
+Download that. Start a temporary project. Go to the “repeater” tab. In the top right of that tab edit the “target” with the server, port, and https options. Then copy and paste the full POST request example I gave below into the “request” box. Hit “Go”
+
+For localhost
+
+POST /asset/gql? HTTP/1.1
+Host: localhost:18443
+Connection: close
+Content-Length: 169
+Accept: application/json
+Origin: http://localhost:18443
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+DNT: 1
+Content-Type: application/json
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.2098746022.1551373676; nrelGovGA=GA1.2.1506305852.1554131201; cl___cav=true; cl__caz=1.direct%7C%7C%7C%7C; cl__calts=; cl__userid=i%3A0%23.w%7Cnrel_nt%5Csthew; cl_s=440909995.619826855; cl_7b8c7_lveid=3009482; cl_149e8_lveid=3009547; cl__cauid=a4a04204a1.1554148975296.1.7; cl__pts=7; cl_sf=sf_947; cl_LastValueSearch=3200320; cl_lvu=https%3A%2F%2Fsp2013.nrel.gov%2FPages%2Fresults.aspx%3Fk%3Dcyber; cl__cass=1.1.1%2C6.3.1%2C2.2.1; cl_867f4_lveid=3200325; cl_lveid=3200325; cl_867f4_lseid=3200326; cl_lseid=3200326; _gid=GA1.2.515111769.1560789522; nrelGovGA_gid=GA1.2.1616750017.1560791317
+
+{"query":"{\n  asset(center_number: \"ý or 1=1 --") {\n    edges {\n      node {\n        center_number\n      }\n    }\n  }\n}\n","variables":null,"operationName":null}
+
+For intci
+
+
+POST /asset/gql? HTTP/1.1
+Host: intci.nrel.gov:18443
+Connection: close
+Content-Length: 169
+Accept: application/json
+Origin: https://intci.nrel.gov:18443
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+DNT: 1
+Content-Type: application/json
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.2098746022.1551373676; nrelGovGA=GA1.2.1506305852.1554131201; cl___cav=true; cl__caz=1.direct%7C%7C%7C%7C; cl__calts=; cl__userid=i%3A0%23.w%7Cnrel_nt%5Csthew; cl_s=440909995.619826855; cl_7b8c7_lveid=3009482; cl_149e8_lveid=3009547; cl__cauid=a4a04204a1.1554148975296.1.7; cl__pts=7; cl_sf=sf_947; cl_LastValueSearch=3200320; cl_lvu=https%3A%2F%2Fsp2013.nrel.gov%2FPages%2Fresults.aspx%3Fk%3Dcyber; cl__cass=1.1.1%2C6.3.1%2C2.2.1; cl_867f4_lveid=3200325; cl_lveid=3200325; cl_867f4_lseid=3200326; cl_lseid=3200326; _gid=GA1.2.515111769.1560789522; nrelGovGA_gid=GA1.2.1616750017.1560791317
+ 
+{"query":"{\n  asset(center_number: \"ý or 1=1 --") {\n    edges {\n      node {\n        center_number\n      }\n    }\n  }\n}\n","variables":null,"operationName":null}
+
+Produces the following stacktrace:
+
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    | 2019-06-24 13:49:02,591 - flask.app - ERROR - Exception on /project/gql [POST]
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    | Traceback (most recent call last):
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     response = self.full_dispatch_request()
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     rv = self.handle_user_exception(e)
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     return cors_after_request(app.make_response(f(*args, **kwargs)))
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     reraise(exc_type, exc_value, tb)
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     raise value
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     rv = self.dispatch_request()
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     return self.view_functions[rule.endpoint](**req.view_args)
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask/views.py", line 88, in view
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     return self.dispatch_request(*args, **kwargs)
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask_graphql/graphqlview.py", line 68, in dispatch_request
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     data = self.parse_body()
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |   File "/opt/app-root/lib/python3.6/site-packages/flask_graphql/graphqlview.py", line 136, in parse_body
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    |     return load_json_body(request.data.decode('utf8'))
+project_service_project_service.1.1r4r1hrwfcjo@3lv14jboss01.nrel.gov    | UnicodeDecodeError: 'utf-8' codec can't decode byte 0xfd in position 39: invalid start byte
+
+Offending line 136 in /opt/app-root/lib/python3.6/site-packages/flask_graphql/graphqlview.py
+
+tmp fix is replace
+
+return load_json_body(request.data.decode('utf8'))
+
+with
+
+try:
+    return load_json_body(request.data.decode('utf8'))
+except UnicodeDecodeError:
+    return load_json_body(request.data.decode('utf8', "backslashreplace"))
+
+But this is vendor supplied code :-(
+
+
+This is an good 200 query.
+
+POST /asset/gql? HTTP/1.1
+Host: localhost:18443
+Content-Length: 114
+Content-Type: application/json
+
+{ "query":"{asset(center_number:\"1000\"){edges{node{tag_number center_number center_name}}}}" }

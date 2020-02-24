@@ -1,0 +1,12 @@
+cx_Oracle==6.3.1
+pymysql
+git+https://github.com/NREL/CryptoConfig.git
+pylint
+graphene>=2.1
+SQLAlchemy
+graphene_sqlalchemy>=2.1
+Flask
+Flask-GraphQL
+cherrypy
+Flask-Cors
+paste
