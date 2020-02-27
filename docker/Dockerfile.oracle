@@ -2,6 +2,10 @@ FROM python:3
 USER root
 
 ENV SERVICE_HOME /opt/grapinator
+# NOTE: you will need to download the instaclient and place under docker/resources
+# https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
+ENV ORCL_BIN instantclient-basic-linux.x64-19.3.0.0.0dbru.zip
+ENV LD_LIBRARY_PATH /opt/oracle/instantclient_19_3
 
 # set local docker resources relative path
 ENV DOCKER_RESOURCES docker/resources
@@ -19,7 +23,12 @@ setup.py $SERVICE_HOME/
 COPY grapinator/ $SERVICE_HOME/grapinator
 
 # update and install requirements
-RUN apt-get update && apt-get -y upgrade \
+RUN apt-get update && apt-get install -y libaio1 \
+    && mkdir -p /opt/oracle \
+    && (cd /opt/oracle;unzip $SERVICE_HOME/$ORCL_BIN) \
+    && rm $SERVICE_HOME/$ORCL_BIN \
+    && echo $LD_LIBRARY_PATH > /etc/ld.so.conf.d/oracle-instantclient.conf \
+    && ldconfig \
     && pip install -r requirements.txt \
     && python setup.py develop 
 
