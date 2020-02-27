@@ -175,6 +175,7 @@ class SchemaSettings(object):
                 ,'gql_conn_query_name': row['GQL_CONN_QUERY_NAME']
                 ,'gql_db_class': row['DB_CLASS_NAME']
                 ,'gql_columns': gql_class_cols
+                ,'gql_db_default_sort_col': row['DB_DEFAULT_SORT_COL']
                 }
             gql_classes.append(gql_class)
         return gql_classes

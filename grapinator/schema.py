@@ -6,11 +6,11 @@ import datetime
 from grapinator import log, schema_settings
 from grapinator.model import *
 
-def gql_class_constructor(clazz_name, db_clazz_name, clazz_attrs):
+def gql_class_constructor(clazz_name, db_clazz_name, clazz_attrs, default_sort_col):
     gql_attrs = {
         'Meta': type('Meta', (), {'model': globals()[db_clazz_name], 'interfaces': (relay.Node, )})
         ,'matches': graphene.String(description='exact, contains', default_value='contains')
-        ,'sort_by': graphene.String(description='Field to sort by.', default_value='employee_number')
+        ,'sort_by': graphene.String(description='Field to sort by.', default_value=default_sort_col)
         ,'logic': graphene.String(description='and, or', default_value='and')
         ,'sort_dir': graphene.String(description='asc, desc', default_value='asc')
         }
@@ -71,6 +71,7 @@ for clazz in schema_settings.get_gql_classes():
         clazz['gql_class']
         ,clazz['gql_db_class']
         ,clazz['gql_columns']
+        ,clazz['gql_db_default_sort_col']
         )
     # create the Graphene connection class
     globals()[clazz['gql_conn_class']] = gql_connection_class_constructor(
