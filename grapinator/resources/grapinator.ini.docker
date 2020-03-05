@@ -7,8 +7,8 @@ GQL_SCHEMA = /resources/schema.dct
 [WSGI]
 WSGI_SOCKET_HOST = 0.0.0.0
 WSGI_SOCKET_PORT = 8443
-WSGI_SSL_CERT = /certs/cert.pem
-WSGI_SSL_PRIVKEY = /certs/privkey.pem
+WSGI_SSL_CERT = /opt/grapinator/grapinator/resources/cert.pem
+WSGI_SSL_PRIVKEY = /opt/grapinator/grapinator/resources/privkey.pem
 
 [CORS]
 CORS_ENABLE = True
@@ -35,6 +35,6 @@ FLASK_DEBUG = False
 DB_USER = dba
 DB_PASSWORD = enc(gAAAAABdm0f1_Cj4lyoxlWrnBQuIcbFJy-R90dA-OUt87SCgeKnti8yPgXg89OxKIqCWJUTmL_jCcIlSW5Oi6cQ9sm8HdCy1ng==)
 DB_TYPE = mysql+pymysql
-DB_CONNECT = 127.0.0.1:3306/employees
+DB_CONNECT = mariadb:3306/employees
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 

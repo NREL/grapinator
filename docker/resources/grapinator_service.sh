@@ -3,4 +3,4 @@
 # Proxy asset service behind a production WSGI server
 
 cd /opt/grapinator
-python grapinator/svc_cherrypy.py
+python3 grapinator/svc_cherrypy.py

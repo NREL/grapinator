@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+    grapinator:
+        image: grapinator:latest
+        environment:
+            GQLAPI_CRYPT_KEY: gt6mLqxBdzb75W5gen66X9DKwT9fajHtsC1cbdERTS0=
+        ports:
+            - 8443:8443
+        volumes:
+            - ${PWD}/grapinator/resources:/opt/grapinator/grapinator/resources
+            - ${PWD}/grapinator/resources/grapinator.ini.docker:/opt/grapinator/grapinator/resources/grapinator.ini
+        depends_on:
+            - mariadb
+    
+    mariadb:
+        image: mariadb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: f00baZZ123
+        volumes:
+            - ${PWD}/mariadb:/var/lib/mysql
