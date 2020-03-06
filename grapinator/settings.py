@@ -77,8 +77,9 @@ class Settings(object):
             # load WSGI section
             self.WSGI_SOCKET_HOST = properties.get('WSGI', 'WSGI_SOCKET_HOST')
             self.WSGI_SOCKET_PORT = properties.getint('WSGI', 'WSGI_SOCKET_PORT')
-            self.WSGI_SSL_CERT = properties.get('WSGI', 'WSGI_SSL_CERT')
-            self.WSGI_SSL_PRIVKEY = properties.get('WSGI', 'WSGI_SSL_PRIVKEY')
+            if properties.has_option('WSGI', 'WSGI_SSL_CERT') and properties.has_option('WSGI', 'WSGI_SSL_PRIVKEY'):
+                self.WSGI_SSL_CERT = properties.get('WSGI', 'WSGI_SSL_CERT')
+                self.WSGI_SSL_PRIVKEY = properties.get('WSGI', 'WSGI_SSL_PRIVKEY')
 
             # load CORS
             self.CORS_ENABLE = properties.getboolean('CORS', 'CORS_ENABLE')

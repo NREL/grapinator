@@ -13,7 +13,8 @@
 # http://fgimian.github.io/blog/2012/12/08/setting-up-a-rock-solid-python-development-web-server/
 
 import cherrypy
-from paste.translogger import TransLogger
+from requestlogger import WSGILogger, ApacheFormatter
+from logging import StreamHandler
 from flask import Flask
 from flask_graphql import GraphQLView
 
@@ -22,8 +23,9 @@ from grapinator.app import app
 from grapinator.model import db_session
 
 def run_server():
-    # Enable WSGI access logging via Paste
-    app_logged = TransLogger(app)
+    # Enable WSGI access logging 
+    handlers = [StreamHandler(), ]
+    app_logged = WSGILogger(app, handlers, ApacheFormatter())
 
     cherrypy.tree.graft(app_logged, '/')
     cherrypy.config.update({
