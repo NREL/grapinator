@@ -9,4 +9,4 @@ Flask
 Flask-GraphQL
 cherrypy
 Flask-Cors
-paste
+wsgi-request-logger
