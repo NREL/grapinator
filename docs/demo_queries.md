@@ -40,7 +40,7 @@
 ## Return all department managers and their employee information.
 ```
 {
-	department_managers {
+  department_managers {
     edges {
       node {
         employee {
@@ -49,25 +49,25 @@
           last_name
           hire_date
           gender
-          
+
           employee_department {
             department {
               department_number
               department_name
             }
           }
-          
+
           employee_title {
             title
             from_date
             to_date
           }
-          
+
           employee_salary {
             salary
             from_date
             to_date
-          }          
+          }
         }
       }
     }
