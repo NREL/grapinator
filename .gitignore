@@ -1,5 +1,6 @@
 # Ignore 
 docker/resources/instantclient*
+docker/resources/oracle*
 mariadb/*
 
 # Byte-compiled / optimized / DLL files
