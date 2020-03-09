@@ -2,8 +2,9 @@ FROM centos:8
 USER root
 
 ENV SERVICE_HOME /opt/grapinator
-# NOTE: you will need to download the instaclient and place under docker/resources
+# Note: This build includes required drivers for Oracle connectivity download from:
 # https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
+ENV ORCL_URL https://download.oracle.com/otn_software/linux/instantclient/19600
 ENV ORCL_BIN oracle-instantclient19.6-basic-19.6.0.0.0-1.x86_64.rpm
 ENV LD_LIBRARY_PATH /usr/lib/oracle/19.6/client64/lib
 
@@ -15,7 +16,6 @@ WORKDIR $SERVICE_HOME
 
 # copy service code to SERVICE_HOME
 COPY $DOCKER_RESOURCES/grapinator_service.sh \
-$DOCKER_RESOURCES/$ORCL_BIN \
 README.md \
 requirements.txt \
 setup.py $SERVICE_HOME/
@@ -23,14 +23,20 @@ setup.py $SERVICE_HOME/
 COPY grapinator/ $SERVICE_HOME/grapinator 
 
 # update and install requirements
-RUN yum -y update && yum clean all \
+RUN echo "Download Oracle driver: $SERVICE_HOME/$ORCL_BIN" \
+    && curl --output $SERVICE_HOME/$ORCL_BIN $ORCL_URL/$ORCL_BIN \
+    && echo "Updating container baseline..." \
+    && yum -y update && yum clean all \
     && yum -y install python3 git libnsl \
+    && echo "Installing Oracle driver..." \
     && yum localinstall $ORCL_BIN --nogpgcheck -y \
     && rm $SERVICE_HOME/$ORCL_BIN \
     && echo $LD_LIBRARY_PATH > /etc/ld.so.conf.d/oracle-instantclient.conf \
     && ldconfig \
+    && echo "Installing grapinator..." \
     && pip3 install -r requirements.txt \
     && python3 setup.py develop \
+    && echo "Removing unneeded container software..." \
     && yum -y remove openssh* http* rh-nodejs* gcc* perl* 
 
 EXPOSE 8443
