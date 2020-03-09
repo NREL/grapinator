@@ -193,6 +193,14 @@
         ]
         ,'RELATIONSHIPS': [
             {
+                'rel_name': 'department_managers'
+                ,'rel_class_name': 'db_DeptManager'
+                ,'rel_arguments': {
+                    'foreign_keys': 'db_DeptManager.employee_number'
+                    ,'primaryjoin': 'remote(db_DeptManager.employee_number) == foreign(db_Employees.employee_number)'
+                }
+            },            
+            {
                 'rel_name': 'employee_department'
                 ,'rel_class_name': 'db_DeptEmp'
                 ,'rel_arguments': {

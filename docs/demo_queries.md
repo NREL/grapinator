@@ -37,7 +37,7 @@
 } 
 ```
 
-## Return all department managers and their employee information.
+## Return all department managers with their employee information.
 ```
 {
   department_managers {
