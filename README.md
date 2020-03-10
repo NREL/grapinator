@@ -28,14 +28,17 @@ Allthough I use this code in production at my company, I consider it alpha code.
 docker/docker_build_employeesdb
 ```
 
-### Run the demo against the employees db
-### Note: Startup the first time will take a bit longer as the employee database is created on initial load.
+### Employee database demo setup for grapinator.
+#### Note: Startup the first time will take a bit longer as the employee database is 
+#### created on initial load.  Look for "Database employeesdb setup complete." before you continue.
 ```
 docker-compose -f docker/grapinator.yml up
 goto: https://localhost:8443/employees/gql
 ```
 
-### Setup OSX/Linux
+### Development setup
+
+#### Setup OSX/Linux
 ```
 python -m venv venv
 source venv/bin/activate
@@ -45,7 +48,7 @@ source venv/bin/activate
 (venv) $ cd grapinator;python app.py
 ```
 
-### Setup Windows
+#### Setup Windows
 ```
 python -m venv venv
 venv\Scripts\activate.bat
@@ -56,7 +59,7 @@ venv\Scripts\activate.bat
 (venv) python app.py
 ```
 
-### Running unit tests from the command line.
+#### Running unit tests from the command line.
 Unit tests are located in the 'tests' directory.
 Integration tests are located in the 'tests_integration' directory.
 ```
