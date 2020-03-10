@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Author: David Martin
-# Proxy asset service behind a production WSGI server
+# Proxy service behind a production WSGI server
 
 cd /opt/grapinator
 python3 grapinator/svc_cherrypy.py
