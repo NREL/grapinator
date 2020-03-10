@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+    mariadb:
+        image: employeesdb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: f00baZZ123
+        ports:
+            - 3306:3306
+        volumes:
+            - ${PWD}/mariadb:/var/lib/mysql
