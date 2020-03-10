@@ -20,25 +20,21 @@ Allthough I use this code in production at my company, I consider it alpha code.
 ## Getting Started
 
 ### Demo Prerequisites
-- **Python:** Requires [Python 3](https://www.python.org/downloads/)
-- **MySQL:** Demo schema requires [MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html) with the [Employee Sample Database](https://dev.mysql.com/doc/employee/en/).
+- [docker](https://docs.docker.com/install/)
+- [docker-compose](https://docs.docker.com/compose/install/) 
 
-### Create demo employeesdb docker container
-```
-docker/docker_build_employeesdb
-```
-
-### Employee database demo setup for grapinator.
+### Employee database demo setup
 - **Note:** Startup the first time will take a bit longer as the employee database is created on initial load.  Look for "Database employeesdb setup complete." in the output of docker-compose before you continue.  Once the contaner is started you can start the [GraphiQL IDE](https://localhost:8443/employees/gql)
 ```
+docker/docker_build_employeesdb
 docker-compose -f docker/grapinator.yml up
 ```
 
 ### Development setup
 
-#### Start employees db.
+#### Start employees db
 ```
-docker-compose -f docker/grapinator.yml up
+docker-compose -f docker/employeesdb.yml up
 ```
 
 #### Setup OSX/Linux
@@ -62,7 +58,7 @@ venv\Scripts\activate.bat
 (venv) python app.py
 ```
 
-#### Running unit tests from the command line.
+#### Running unit tests from the command line
 Unit tests are located in the 'tests' directory.
 Integration tests are located in the 'tests_integration' directory.
 ```
