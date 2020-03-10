@@ -23,6 +23,18 @@ Allthough I use this code in production at my company, I consider it alpha code.
 - **Python:** Requires [Python 3](https://www.python.org/downloads/)
 - **MySQL:** Demo schema requires [MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html) with the [Employee Sample Database](https://dev.mysql.com/doc/employee/en/).
 
+### Create demo employeesdb docker container
+```
+docker/docker_build_employeesdb
+```
+
+### Run the demo against the employees db
+### Note: Startup the first time will take a bit longer as the employee database is created on initial load.
+```
+docker-compose -f docker/grapinator.yml up
+goto: https://localhost:8443/employees/gql
+```
+
 ### Setup OSX/Linux
 ```
 python -m venv venv
