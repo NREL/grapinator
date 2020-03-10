@@ -29,10 +29,9 @@ docker/docker_build_employeesdb
 ```
 
 ### Employee database demo setup for grapinator.
-- **Note:** Startup the first time will take a bit longer as the employee database is created on initial load.  Look for "Database employeesdb setup complete." in the output of docker-compose before you continue.
+- **Note:** Startup the first time will take a bit longer as the employee database is created on initial load.  Look for "Database employeesdb setup complete." in the output of docker-compose before you continue.  Once the contaner is started you can start the [GraphiQL IDE](https://localhost:8443/employees/gql)
 ```
 docker-compose -f docker/grapinator.yml up
-goto: (https://localhost:8443/employees/gql)
 ```
 
 ### Development setup
