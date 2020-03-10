@@ -26,7 +26,7 @@ Allthough I use this code in production at my company, I consider it alpha code.
 ### Employee database demo setup
 - **Note:** Startup the first time will take a bit longer as the employee database is created on initial load.  Look for "Database employeesdb setup complete." in the output of docker-compose before you continue.  Once the contaner is started you can start the [GraphiQL IDE](https://localhost:8443/employees/gql)
 ```
-docker/docker_build_employeesdb
+docker/docker_build_grapinatordb
 docker-compose -f docker/grapinator.yml up
 ```
 
@@ -34,7 +34,7 @@ docker-compose -f docker/grapinator.yml up
 
 #### Start employees db
 ```
-docker-compose -f docker/employeesdb.yml up
+docker-compose -f docker/grapinatordb.yml up
 ```
 
 #### Setup OSX/Linux

@@ -1,7 +1,7 @@
 version: '3.3'
 services:
-    mariadb:
-        image: employeesdb:latest
+    grapinatordb:
+        image: grapinatordb:latest
         environment:
             MYSQL_ROOT_PASSWORD: f00baZZ123
         ports:
