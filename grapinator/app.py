@@ -40,6 +40,7 @@ def apply_custom_response(response):
     response.headers["X-Frame-Options"] = settings.HTTP_HEADERS_XFRAME
     response.headers["X-XSS-Protection"] = settings.HTTP_HEADERS_XSS_PROTECTION
     response.headers["Cache-Control"] = settings.HTTP_HEADER_CACHE_CONTROL
+    response.headers["Access-Control-Allow-Headers"] = settings.CORS_ALLOW_HEADERS
     return response
 
 @app.teardown_appcontext
