@@ -1,0 +1,42 @@
+[
+    {
+        'GQL_CLASS_NAME': 'Actor'
+        ,'GQL_CONN_CLASS_NAME': 'ActorConnection'
+        ,'GQL_CONN_QUERY_NAME': 'actor'
+        ,'DB_CLASS_NAME': 'db_Actor'
+        ,'DB_TABLE_NAME': 'actor'
+        ,'DB_TABLE_PK': 'actor_id'
+        ,'DB_DEFAULT_SORT_COL': 'actor_id'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'actor_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Actor id (PK).'
+                ,'db_col_name': 'actor_id'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'first_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Actor first name.'
+                ,'db_col_name': 'first_name'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'last_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Actor last name.'
+                ,'db_col_name': 'last_name'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'last_update'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Actor last update.'
+                ,'db_col_name': 'last_update'
+                ,'db_type': Date
+            },
+        ]
+        ,'RELATIONSHIPS': []
+    },
+]
