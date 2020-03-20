@@ -1,4 +1,4 @@
-<table>
+<table border="0">
 <tr>
 <td><img src="GraphinatorLogoTrans.png"></td><td><h1>Grapinator</h1></td>
 <tr>
