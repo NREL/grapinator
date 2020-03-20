@@ -1,5 +1,10 @@
-# grapinator
-Dynamic GraphQL API Creator for Python
+<table>
+<tr>
+<td><img src="GraphinatorLogoTrans.png"></td><td><h1>Grapinator</h1></td>
+<tr>
+</table>
+
+# Dynamic GraphQL API Creator for Python
 
 ## Introduction
 Grapinator is a dynamic api generator based on the [Graphene](http://graphene-python.org) library for building GraphQL query services.  All you have to do to get a fully fuctional GraphQL service up and running is to configure a few setup files!  
