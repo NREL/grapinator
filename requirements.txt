@@ -1,10 +1,10 @@
-cx_Oracle==6.3.1
+cx_Oracle
 pymysql
 git+https://github.com/NREL/CryptoConfig.git
 pylint
-graphene>=2.1
+graphene
 SQLAlchemy
-graphene_sqlalchemy>=2.1
+graphene_sqlalchemy
 Flask
 Flask-GraphQL
 cherrypy

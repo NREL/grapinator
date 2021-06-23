@@ -39,4 +39,77 @@
         ]
         ,'RELATIONSHIPS': []
     },
+    {
+        'GQL_CLASS_NAME': 'FilmActor'
+        ,'GQL_CONN_CLASS_NAME': 'FilmActorConnection'
+        ,'GQL_CONN_QUERY_NAME': 'film_actor'
+        ,'DB_CLASS_NAME': 'db_FilmActor'
+        ,'DB_TABLE_NAME': 'film_actor'
+        ,'DB_TABLE_PK': 'film_id'
+        ,'DB_DEFAULT_SORT_COL': 'film_id'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'actor_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Actor id (FK).'
+                ,'db_col_name': 'actor_id'
+                ,'db_type': Integer
+            },
+             {
+                'gql_col_name': 'film_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Film id (FK).'
+                ,'db_col_name': 'film_id'
+                ,'db_type': Integer
+            },   
+            {
+                'gql_col_name': 'last_update'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Actor last update.'
+                ,'db_col_name': 'last_update'
+                ,'db_type': Date
+            },
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'ActorInfo'
+        ,'GQL_CONN_CLASS_NAME': 'ActorInfoConnection'
+        ,'GQL_CONN_QUERY_NAME': 'actor_info'
+        ,'DB_CLASS_NAME': 'db_ActorInfo'
+        ,'DB_TABLE_NAME': 'actor_info'
+        ,'DB_TABLE_PK': 'actor_id'
+        ,'DB_DEFAULT_SORT_COL': 'actor_id'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'actor_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Actor id (FK).'
+                ,'db_col_name': 'actor_id'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'first_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Actor first name.'
+                ,'db_col_name': 'first_name'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'last_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Actor last name.'
+                ,'db_col_name': 'last_name'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'film_info'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Film info.'
+                ,'db_col_name': 'film_info'
+                ,'db_type': String
+            },
+        ]
+        ,'RELATIONSHIPS': []
+    },
 ]

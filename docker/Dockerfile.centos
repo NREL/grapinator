@@ -33,6 +33,7 @@ RUN echo "Download Oracle driver: $SERVICE_HOME/$ORCL_BIN" \
     && rm $SERVICE_HOME/$ORCL_BIN \
     && echo $LD_LIBRARY_PATH > /etc/ld.so.conf.d/oracle-instantclient.conf \
     && ldconfig \
+    && pip3 install --upgrade pip \
     && echo "Installing grapinator..." \
     && pip3 install -r requirements.txt \
     && python3 setup.py develop \
