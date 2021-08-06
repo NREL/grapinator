@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # Author: David Martin
 # Proxy service behind a production WSGI server
 
