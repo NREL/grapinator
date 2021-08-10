@@ -1,5 +1,5 @@
 # uber build for grapinator and oracle client
-FROM alpine:3.12
+FROM alpine:3
 
 # Note: This build includes required drivers for Oracle connectivity download from:
 # https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-basic-linux.x64-21.1.0.0.0.zip
@@ -27,6 +27,7 @@ setup.py $SERVICE_HOME/
 
 COPY grapinator/ $SERVICE_HOME/grapinator 
 
+# install all dependencies for build
 RUN apk add --update-cache \
 	curl \
 	libaio \

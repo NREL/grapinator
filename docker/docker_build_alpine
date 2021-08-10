@@ -1,0 +1,3 @@
+#!/bin/sh
+
+docker build --rm -f docker/Dockerfile.alpine -t grapinator_alpine:latest .
