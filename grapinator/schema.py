@@ -9,7 +9,7 @@ from grapinator.model import *
 def gql_class_constructor(clazz_name, db_clazz_name, clazz_attrs, default_sort_col):
     gql_attrs = {
         'Meta': type('Meta', (), {'model': globals()[db_clazz_name], 'interfaces': (relay.Node, )})
-        ,'matches': graphene.String(description='exact, contains', default_value='contains')
+        ,'matches': graphene.String(description='contains, exact, eq, gt, gte, lt, lte, ne', default_value='contains')
         ,'sort_by': graphene.String(description='Field to sort by.', default_value=default_sort_col)
         ,'logic': graphene.String(description='and, or', default_value='and')
         ,'sort_dir': graphene.String(description='asc, desc', default_value='asc')
@@ -52,8 +52,21 @@ class MyConnectionField(SQLAlchemyConnectionField):
         
         for field, value in args.items():
             if field not in cls.RELAY_ARGS:
-                if matches == 'exact' or isinstance(value, datetime.datetime):
+                if matches == 'exact' or matches == 'eq':
                     filter_conditions.append(getattr(model, field) == value)
+                elif matches == 'lt':
+                    filter_conditions.append(getattr(model, field) < value)
+                elif matches == 'lte':
+                    filter_conditions.append(getattr(model, field) <= value)
+                elif matches == 'gt':
+                    filter_conditions.append(getattr(model, field) > value)
+                elif matches == 'gte':
+                    filter_conditions.append(getattr(model, field) >= value)
+                elif matches == 'ne':
+                    filter_conditions.append(getattr(model, field) != value)
+                # these last 2 are opinionated defaults for searching date types and strings.
+                elif isinstance(value, (datetime.date, datetime.datetime)):
+                    filter_conditions.append(getattr(model, field) >= value)
                 else: 
                     filter_conditions.append(getattr(model, field).ilike('%' + value + '%'))
         

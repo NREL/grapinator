@@ -1,4 +1,5 @@
 # Ignore 
+.DS_Store
 docker/resources/instantclient*
 docker/resources/oracle*
 mariadb/*
