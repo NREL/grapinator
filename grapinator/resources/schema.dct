@@ -1,145 +1,5 @@
 [
     {
-        'GQL_CLASS_NAME': 'Departments'
-        ,'GQL_CONN_CLASS_NAME': 'DepartmentsConnection'
-        ,'GQL_CONN_QUERY_NAME': 'departments'
-        ,'DB_CLASS_NAME': 'db_Departments'
-        ,'DB_TABLE_NAME': 'departments'
-        ,'DB_TABLE_PK': 'dept_no'
-        ,'DB_DEFAULT_SORT_COL': 'dept_no'
-        ,'FIELDS': [
-            {
-                'gql_col_name': 'department_number'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Department number (PK).'
-                ,'db_col_name': 'dept_no'
-                ,'db_type': String
-            },
-            {
-                'gql_col_name': 'department_name'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Department name.'
-                ,'db_col_name': 'dept_name'
-                ,'db_type': String
-            },
-        ]
-        ,'RELATIONSHIPS': []
-    },
-    {
-        'GQL_CLASS_NAME': 'DeptEmp'
-        ,'GQL_CONN_CLASS_NAME': 'DeptEmpConnection'
-        ,'GQL_CONN_QUERY_NAME': 'employee_department'
-        ,'DB_CLASS_NAME': 'db_DeptEmp'
-        ,'DB_TABLE_NAME': 'dept_emp'
-        ,'DB_TABLE_PK': 'emp_no'
-        ,'DB_DEFAULT_SORT_COL': 'emp_no'
-        ,'FIELDS': [
-            {
-                'gql_col_name': 'employee_number'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Employee number (PK).'
-                ,'db_col_name': 'emp_no'
-                ,'db_type': Integer
-            },
-            {
-                'gql_col_name': 'department_number'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Department number.'
-                ,'db_col_name': 'dept_no'
-                ,'db_type': String
-            },
-            {
-                'gql_col_name': 'from_date'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Start date of department service.'
-                ,'db_col_name': 'from_date'
-                ,'db_type': Date
-            },
-            {
-                'gql_col_name': 'to_date'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'End date of department service.'
-                ,'db_col_name': 'to_date'
-                ,'db_type': Date
-            },
-        ]
-        ,'RELATIONSHIPS': [
-            {
-                'rel_name': 'employee'
-                ,'rel_class_name': 'db_Employees'
-                ,'rel_arguments': {
-                    'foreign_keys': 'db_DeptEmp.employee_number'
-                    ,'primaryjoin': 'remote(db_Employees.employee_number) == foreign(db_DeptEmp.employee_number)'
-                }
-            },
-            {
-                'rel_name': 'department'
-                ,'rel_class_name': 'db_Departments'
-                ,'rel_arguments': {
-                    'foreign_keys': 'db_DeptEmp.employee_number'
-                    ,'primaryjoin': 'remote(db_Departments.department_number) == foreign(db_DeptEmp.department_number)'
-                }
-            },
-        ]
-    },
-    {
-        'GQL_CLASS_NAME': 'DeptManager'
-        ,'GQL_CONN_CLASS_NAME': 'DeptManagerConnection'
-        ,'GQL_CONN_QUERY_NAME': 'department_managers'
-        ,'DB_CLASS_NAME': 'db_DeptManager'
-        ,'DB_TABLE_NAME': 'dept_manager'
-        ,'DB_TABLE_PK': 'emp_no'
-        ,'DB_DEFAULT_SORT_COL': 'emp_no'
-        ,'FIELDS': [
-            {
-                'gql_col_name': 'employee_number'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Employee number (PK).'
-                ,'db_col_name': 'emp_no'
-                ,'db_type': Integer
-            },
-            {
-                'gql_col_name': 'department_number'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Department number.'
-                ,'db_col_name': 'dept_no'
-                ,'db_type': String
-            },
-            {
-                'gql_col_name': 'from_date'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Start date of department manager service.'
-                ,'db_col_name': 'from_date'
-                ,'db_type': Date
-            },
-            {
-                'gql_col_name': 'to_date'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'End date of department manager service.'
-                ,'db_col_name': 'to_date'
-                ,'db_type': Date
-            },
-        ]
-        ,'RELATIONSHIPS': [
-            {
-                'rel_name': 'employee'
-                ,'rel_class_name': 'db_Employees'
-                ,'rel_arguments': {
-                    'foreign_keys': 'db_DeptManager.employee_number'
-                    ,'primaryjoin': 'remote(db_Employees.employee_number) == foreign(db_DeptManager.employee_number)'
-                }
-            },
-            {
-                'rel_name': 'department'
-                ,'rel_class_name': 'db_Departments'
-                ,'rel_arguments': {
-                    'foreign_keys': 'db_DeptManager.employee_number'
-                    ,'primaryjoin': 'remote(db_Departments.department_number) == foreign(db_DeptManager.department_number)    '
-                }
-            },
-        ]
-    },
-    {
         'GQL_CLASS_NAME': 'Employee'
         ,'GQL_CONN_CLASS_NAME': 'EmployeeConnection'
         ,'GQL_CONN_QUERY_NAME': 'employee'
@@ -192,118 +52,47 @@
             }
         ]
         ,'RELATIONSHIPS': [
-            {
-                'rel_name': 'department_managers'
-                ,'rel_class_name': 'db_DeptManager'
-                ,'rel_arguments': {
-                    'foreign_keys': 'db_DeptManager.employee_number'
-                    ,'primaryjoin': 'remote(db_DeptManager.employee_number) == foreign(db_Employees.employee_number)'
-                }
-            },            
-            {
-                'rel_name': 'employee_department'
-                ,'rel_class_name': 'db_DeptEmp'
-                ,'rel_arguments': {
-                    'foreign_keys': 'db_Employees.employee_number'
-                    ,'primaryjoin': 'remote(db_DeptEmp.employee_number) == foreign(db_Employees.employee_number)'
-                }
-            },
-            {
-                'rel_name': 'employee_salary'
-                ,'rel_class_name': 'db_Salaries'
-                ,'rel_arguments': {
-                    'foreign_keys': 'db_Employees.employee_number'
-                    ,'primaryjoin': 'remote(db_Salaries.employee_number) == foreign(db_Employees.employee_number)'
-                }
-            },
-            {
-                'rel_name': 'employee_title'
-                ,'rel_class_name': 'db_Titles'
-                ,'rel_arguments': {
-                    'foreign_keys': 'db_Employees.employee_number'
-                    ,'primaryjoin': 'remote(db_Titles.employee_number) == foreign(db_Employees.employee_number)'
-                }
-            },
         ]
     },
     {
-        'GQL_CLASS_NAME': 'Salaries'
-        ,'GQL_CONN_CLASS_NAME': 'SalariesConnection'
-        ,'GQL_CONN_QUERY_NAME': 'employee_salary'
-        ,'DB_CLASS_NAME': 'db_Salaries'
-        ,'DB_TABLE_NAME': 'salaries'
-        ,'DB_TABLE_PK': 'emp_no'
-        ,'DB_DEFAULT_SORT_COL': 'emp_no'
-        ,'FIELDS': [
-            {
-                'gql_col_name': 'employee_number'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Employee number.'
-                ,'db_col_name': 'emp_no'
-                ,'db_type': Integer
-            },
-            {
-                'gql_col_name': 'salary'
-                ,'gql_type': graphene.Int
-                ,'gql_description': 'Employee salary.'
-                ,'db_col_name': 'salary'
-                ,'db_type': Integer
-            },
-            {
-                'gql_col_name': 'from_date'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Start date of salary assignment.'
-                ,'db_col_name': 'from_date'
-                ,'db_type': Date
-            },
-            {
-                'gql_col_name': 'to_date'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'End date of salary assignment.'
-                ,'db_col_name': 'to_date'
-                ,'db_type': Date
-            },
-        ]
-        ,'RELATIONSHIPS': []
-    },
-    {
-        'GQL_CLASS_NAME': 'Titles'
-        ,'GQL_CONN_CLASS_NAME': 'TitlesConnection'
-        ,'GQL_CONN_QUERY_NAME': 'employee_title'
-        ,'DB_CLASS_NAME': 'db_Titles'
+        'GQL_CLASS_NAME': 'Title'
+        ,'GQL_CONN_CLASS_NAME': 'TitleConnection'
+        ,'GQL_CONN_QUERY_NAME': 'title'
+        ,'DB_CLASS_NAME': 'db_Title'
         ,'DB_TABLE_NAME': 'titles'
-        ,'DB_TABLE_PK': 'emp_no'
+        ,'DB_TABLE_PK': ['emp_no','title']
         ,'DB_DEFAULT_SORT_COL': 'emp_no'
         ,'FIELDS': [
             {
                 'gql_col_name': 'employee_number'
                 ,'gql_type': graphene.String
-                ,'gql_description': 'Employee number.'
+                ,'gql_description': 'Employee number (PK).'
                 ,'db_col_name': 'emp_no'
                 ,'db_type': Integer
             },
             {
                 'gql_col_name': 'title'
                 ,'gql_type': graphene.String
-                ,'gql_description': 'Employee title.'
+                ,'gql_description': 'Title.'
                 ,'db_col_name': 'title'
                 ,'db_type': String
             },
             {
                 'gql_col_name': 'from_date'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'Start date of title assignment.'
+                ,'gql_type': graphene.Date
+                ,'gql_description': 'From date.'
                 ,'db_col_name': 'from_date'
                 ,'db_type': Date
             },
             {
                 'gql_col_name': 'to_date'
-                ,'gql_type': graphene.String
-                ,'gql_description': 'End date of title assignment.'
+                ,'gql_type': graphene.Date
+                ,'gql_description': 'To date.'
                 ,'db_col_name': 'to_date'
                 ,'db_type': Date
-            },
+            }
         ]
-        ,'RELATIONSHIPS': []
+        ,'RELATIONSHIPS': [
+        ]               
     },
 ]
