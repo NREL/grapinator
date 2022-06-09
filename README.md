@@ -30,20 +30,19 @@ Allthough I use this code in production at my company, I consider it alpha code.
 - [docker](https://docs.docker.com/install/)
 - [docker-compose](https://docs.docker.com/compose/install/) 
 
-### Employee database demo setup
+### Docker container setup and Employee database demo setup
 - **Note:** Startup the first time will take a bit longer as the employee database is created on initial load.  Look for "Database employeesdb setup complete." in the output of docker-compose before you continue.  Once the contaner is started you can start the [GraphiQL IDE](https://localhost:8443/employees/gql).  See [demo_queries.md](docs/demo_queries.md) for some example queries.
-```
+```sh
+# create employee db container
 docker/docker_build_grapinatordb
+# start employee db container
+docker-compose -f docker/grapinatordb.yml up
+# create grapinator container
+docker/docker_build_alpine
+# run demo grapinator container 
 docker-compose -f docker/grapinator.yml up
 ```
-
 ### Development setup
-
-#### Start employees db
-```
-docker-compose -f docker/grapinatordb.yml up
-```
-
 #### Setup OSX/Linux
 ```
 python -m venv venv
