@@ -35,11 +35,11 @@ Allthough I use this code in production at my company, I consider it alpha code.
 ```sh
 # create employee db container
 docker/docker_build_grapinatordb
-# start employee db container
-docker-compose -f docker/grapinatordb.yml up
+
 # create grapinator container
 docker/docker_build_alpine
-# run demo grapinator container 
+
+# run demo grapinator container. This starts employee db too.
 docker-compose -f docker/grapinator.yml up
 ```
 ### Development setup
