@@ -35,13 +35,12 @@ def orm_class_constructor(clazz_name, db_table, clazz_pk, clazz_attrs, clazz_rel
             orm_attrs[col['name']] = Column(col['db_col_name'], col['db_type'], primary_key=True)
         else:
             orm_attrs[col['name']] = Column(col['db_col_name'], col['db_type'])
-    # TODO: this works for now but needs improvment.
+
     # this sets relationships for table joins in sqlalchemy
     for col in clazz_relationships:
         orm_attrs[col['name']] = relationship(
             col['class_name']
-            ,primaryjoin=col['arguments']['primaryjoin']
-            ,foreign_keys=col['arguments']['foreign_keys']
+            ,**col['arguments']
             )
 
     return type(str(clazz_name), (Base,), orm_attrs)

@@ -169,6 +169,7 @@ class SchemaSettings(object):
                 'name':r['gql_col_name']
                 ,'type':r['gql_type']
                 ,'desc':r['gql_description']
+                ,'type_args': r['gql_of_type'] if 'gql_of_type' in r else None
                 } for r in row['FIELDS']]
             gql_class = {
                 'gql_class': row['GQL_CLASS_NAME']

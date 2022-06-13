@@ -16,7 +16,8 @@ def gql_class_constructor(clazz_name, db_clazz_name, clazz_attrs, default_sort_c
         }
 
     for attr in clazz_attrs:
-        gql_attrs[attr['name']] = attr['type'](description=attr['desc'])
+        gql_attrs[attr['name']] = attr['type'](attr['type_args'], description=attr['desc'])
+    
     return type(str(clazz_name), (SQLAlchemyObjectType,), gql_attrs)
 
 def gql_connection_class_constructor(clazz_name, gql_clazz_name):
@@ -86,15 +87,20 @@ for clazz in schema_settings.get_gql_classes():
         ,clazz['gql_columns']
         ,clazz['gql_db_default_sort_col']
         )
+
     # create the Graphene connection class
+    """     
     globals()[clazz['gql_conn_class']] = gql_connection_class_constructor(
         clazz['gql_conn_class']
         ,globals()[clazz['gql_class']]
-        )
+        ) 
+    """
 
 def _make_gql_query_fields(cols):
     gql_attrs = {}
     for row in cols:
+        if row['type_args']:
+            continue
         gql_attrs[row['name']] = row['type']()
     gql_attrs.update({
         'matches': graphene.String()

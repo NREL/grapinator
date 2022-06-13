@@ -49,9 +49,26 @@
                 ,'gql_description': 'Gender.'
                 ,'db_col_name': 'gender'
                 ,'db_type': String
+            },
+            {
+                'gql_col_name': 'title'
+                ,'gql_of_type': 'grapinator.schema.Title'
+                ,'gql_type': graphene.List
+                ,'gql_description': 'Employee title'
+                ,'db_col_name': 'title'
+                ,'db_type': String
             }
         ]
         ,'RELATIONSHIPS': [
+            {
+                'rel_name': 'title'
+                ,'rel_class_name': 'db_Title'
+                ,'rel_arguments': {
+                    'foreign_keys': '[db_Employees.employee_number]'
+                    ,'primaryjoin': 'db_Employees.employee_number == db_Title.employee_number'
+                    ,'uselist': True
+                }
+            },
         ]
     },
     {
@@ -90,9 +107,26 @@
                 ,'gql_description': 'To date.'
                 ,'db_col_name': 'to_date'
                 ,'db_type': Date
+            },
+            {
+                'gql_col_name': 'employee'
+                ,'gql_of_type': 'grapinator.schema.Employee'
+                ,'gql_type': graphene.List
+                ,'gql_description': 'Employee'
+                ,'db_col_name': 'employee'
+                ,'db_type': String
             }
         ]
         ,'RELATIONSHIPS': [
+            {
+                'rel_name': 'employee'
+                ,'rel_class_name': 'db_Employees'
+                ,'rel_arguments': {
+                    'foreign_keys': '[db_Title.employee_number]'
+                    ,'primaryjoin': 'db_Title.employee_number == db_Employees.employee_number'
+                    ,'uselist': True
+                }
+            },
         ]               
     },
 ]
