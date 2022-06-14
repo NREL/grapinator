@@ -30,7 +30,8 @@
                 ,'db_type': String
             },
             {
-                'gql_col_name': 'birth_day'
+                'gql_ishidden': True
+                ,'gql_col_name': 'birth_day'
                 ,'gql_type': graphene.Date
                 ,'gql_description': 'Birth day.'
                 ,'db_col_name': 'birth_date'

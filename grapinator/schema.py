@@ -7,17 +7,26 @@ from grapinator import log, schema_settings
 from grapinator.model import *
 
 def gql_class_constructor(clazz_name, db_clazz_name, clazz_attrs, default_sort_col):
+    include_fields = {}
+    exclude_fields = ()
+    for attr in clazz_attrs:
+        if attr['ishidden']:
+            exclude_fields += (attr['name'],)
+        else:
+            include_fields[attr['name']] = attr['type'](attr['type_args'], description=attr['desc'])
+
     gql_attrs = {
-        'Meta': type('Meta', (), {'model': globals()[db_clazz_name], 'interfaces': (relay.Node, )})
+        'Meta': type('Meta', (), {
+            'model': globals()[db_clazz_name]
+            ,'interfaces': (relay.Node, )
+            ,'exclude_fields': exclude_fields
+            })
+        ,**include_fields
         ,'matches': graphene.String(description='contains, exact, eq, gt, gte, lt, lte, ne', default_value='contains')
         ,'sort_by': graphene.String(description='Field to sort by.', default_value=default_sort_col)
         ,'logic': graphene.String(description='and, or', default_value='and')
         ,'sort_dir': graphene.String(description='asc, desc', default_value='asc')
-        }
-
-    for attr in clazz_attrs:
-        gql_attrs[attr['name']] = attr['type'](attr['type_args'], description=attr['desc'])
-    
+    }
     return type(str(clazz_name), (SQLAlchemyObjectType,), gql_attrs)
 
 def gql_connection_class_constructor(clazz_name, gql_clazz_name):
@@ -101,7 +110,7 @@ def _make_gql_query_fields(cols):
     for row in cols:
         # Only allow queryable types. 
         # set optional 'gql_isqueryable': False in schema.dct to skip
-        if row['isqueryable']:
+        if row['isqueryable'] and row['ishidden'] is False:
             gql_attrs[row['name']] = row['type']()
     gql_attrs.update({
         'matches': graphene.String()
