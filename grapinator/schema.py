@@ -99,9 +99,10 @@ for clazz in schema_settings.get_gql_classes():
 def _make_gql_query_fields(cols):
     gql_attrs = {}
     for row in cols:
-        if row['type_args']:
-            continue
-        gql_attrs[row['name']] = row['type']()
+        # Only allow queryable types. 
+        # set optional 'gql_isqueryable': False in schema.dct to skip
+        if row['isqueryable']:
+            gql_attrs[row['name']] = row['type']()
     gql_attrs.update({
         'matches': graphene.String()
         ,'sort_by': graphene.String()

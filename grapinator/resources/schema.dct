@@ -5,7 +5,7 @@
         ,'GQL_CONN_QUERY_NAME': 'employee'
         ,'DB_CLASS_NAME': 'db_Employees'
         ,'DB_TABLE_NAME': 'employees'
-        ,'DB_TABLE_PK': 'emp_no'
+        ,'DB_TABLE_PK': ['emp_no']
         ,'DB_DEFAULT_SORT_COL': 'emp_no'
         ,'FIELDS': [
             {
@@ -51,7 +51,8 @@
                 ,'db_type': String
             },
             {
-                'gql_col_name': 'title'
+                'gql_isqueryable': False
+                ,'gql_col_name': 'title'
                 ,'gql_of_type': 'grapinator.schema.Title'
                 ,'gql_type': graphene.List
                 ,'gql_description': 'Employee title'
@@ -109,7 +110,8 @@
                 ,'db_type': Date
             },
             {
-                'gql_col_name': 'employee'
+                'gql_isqueryable': False
+                ,'gql_col_name': 'employee'
                 ,'gql_of_type': 'grapinator.schema.Employee'
                 ,'gql_type': graphene.List
                 ,'gql_description': 'Employee'

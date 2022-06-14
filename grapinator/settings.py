@@ -170,6 +170,7 @@ class SchemaSettings(object):
                 ,'type':r['gql_type']
                 ,'desc':r['gql_description']
                 ,'type_args': r['gql_of_type'] if 'gql_of_type' in r else None
+                ,'isqueryable': r['gql_isqueryable'] if 'gql_isqueryable' in r else True
                 } for r in row['FIELDS']]
             gql_class = {
                 'gql_class': row['GQL_CLASS_NAME']
