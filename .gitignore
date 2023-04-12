@@ -3,6 +3,7 @@
 docker/resources/instantclient*
 docker/resources/oracle*
 mariadb/*
+venv/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

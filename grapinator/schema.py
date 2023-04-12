@@ -22,7 +22,7 @@ def gql_class_constructor(clazz_name, db_clazz_name, clazz_attrs, default_sort_c
             ,'exclude_fields': exclude_fields
             })
         ,**include_fields
-        ,'matches': graphene.String(description='contains, exact, eq, gt, gte, lt, lte, ne', default_value='contains')
+        ,'matches': graphene.String(description='contains, exact, regex, re, startswith, sw, endswith, ew, eq, gt, gte, lt, lte, ne', default_value='contains')
         ,'sort_by': graphene.String(description='Field to sort by.', default_value=default_sort_col)
         ,'logic': graphene.String(description='and, or', default_value='and')
         ,'sort_dir': graphene.String(description='asc, desc', default_value='asc')
@@ -64,6 +64,12 @@ class MyConnectionField(SQLAlchemyConnectionField):
             if field not in cls.RELAY_ARGS:
                 if matches == 'exact' or matches == 'eq':
                     filter_conditions.append(getattr(model, field) == value)
+                elif matches == 'regex' or matches == 're':
+                    filter_conditions.append(getattr(model, field).regexp_match(value))
+                elif matches == 'startswith' or matches == 'sw':
+                    filter_conditions.append(getattr(model, field).ilike(value + '%'))
+                elif matches == 'endswith' or matches == 'ew':
+                    filter_conditions.append(getattr(model, field).ilike('%' + value))
                 elif matches == 'lt':
                     filter_conditions.append(getattr(model, field) < value)
                 elif matches == 'lte':
@@ -77,6 +83,8 @@ class MyConnectionField(SQLAlchemyConnectionField):
                 # these last 2 are opinionated defaults for searching date types and strings.
                 elif isinstance(value, (datetime.date, datetime.datetime)):
                     filter_conditions.append(getattr(model, field) >= value)
+                elif isinstance(value, (list)):
+                    filter_conditions.append(getattr(model, field).in_(value))
                 else: 
                     filter_conditions.append(getattr(model, field).ilike('%' + value + '%'))
         
@@ -111,7 +119,8 @@ def _make_gql_query_fields(cols):
         # Only allow queryable types. 
         # set optional 'gql_isqueryable': False in schema.dct to skip
         if row['isqueryable'] and row['ishidden'] is False:
-            gql_attrs[row['name']] = row['type']()
+            gql_attrs[row['name']] = row['type'](row['type_args'] if row['type_args'] else None)
+            #gql_attrs[row['name']] = row['type']()
     gql_attrs.update({
         'matches': graphene.String()
         ,'sort_by': graphene.String()
