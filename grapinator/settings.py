@@ -3,6 +3,12 @@ import os
 from os import path
 from datetime import datetime
 from crypto_config import cryptoconfigparser
+from sqlalchemy.orm import (
+    scoped_session
+    ,sessionmaker
+    ,relationship
+    ,synonym
+)
 from sqlalchemy import (
     Column
     ,BigInteger

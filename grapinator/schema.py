@@ -80,11 +80,11 @@ class MyConnectionField(SQLAlchemyConnectionField):
                     filter_conditions.append(getattr(model, field) >= value)
                 elif matches == 'ne':
                     filter_conditions.append(getattr(model, field) != value)
+                elif isinstance(value, (list)):
+                    filter_conditions.append(getattr(model, field).in_(value))
                 # these last 2 are opinionated defaults for searching date types and strings.
                 elif isinstance(value, (datetime.date, datetime.datetime)):
                     filter_conditions.append(getattr(model, field) >= value)
-                elif isinstance(value, (list)):
-                    filter_conditions.append(getattr(model, field).in_(value))
                 else: 
                     filter_conditions.append(getattr(model, field).ilike('%' + value + '%'))
         

@@ -5,6 +5,7 @@ from sqlalchemy.orm import (
     scoped_session
     ,sessionmaker
     ,relationship
+    ,synonym
 )
 
 from grapinator import settings, schema_settings
@@ -31,10 +32,13 @@ def orm_class_constructor(clazz_name, db_table, clazz_pk, clazz_attrs, clazz_rel
     """
     orm_attrs = {'__tablename__': db_table}
     for col in clazz_attrs:
-        if col['db_col_name'] in clazz_pk:
-            orm_attrs[col['name']] = Column(col['db_col_name'], col['db_type'], primary_key=True)
+        if col['db_type'] == 'synonym':
+            orm_attrs[col['name']] = synonym(col['db_col_name'])
         else:
-            orm_attrs[col['name']] = Column(col['db_col_name'], col['db_type'])
+            if col['db_col_name'] in clazz_pk:
+                orm_attrs[col['name']] = Column(col['db_col_name'], col['db_type'], primary_key=True)
+            else:
+                orm_attrs[col['name']] = Column(col['db_col_name'], col['db_type'])
 
     # this sets relationships for table joins in sqlalchemy
     for col in clazz_relationships:
