@@ -10,7 +10,12 @@ def gql_class_constructor(clazz_name, db_clazz_name, clazz_attrs, default_sort_c
     include_fields = {}
     exclude_fields = ()
     for attr in clazz_attrs:
-        if attr['ishidden']:
+        if attr['isresolver']:
+            attr_name = attr['name']
+            resolver_name = "resolve_{}".format(attr_name)
+            include_fields[attr_name] = attr['type'](attr['type_args'], description=attr['desc'])
+            include_fields[resolver_name] = attr['resolver_func']
+        elif attr['ishidden']:
             exclude_fields += (attr['name'],)
         else:
             include_fields[attr['name']] = attr['type'](attr['type_args'], description=attr['desc'])
@@ -26,6 +31,7 @@ def gql_class_constructor(clazz_name, db_clazz_name, clazz_attrs, default_sort_c
         ,'sort_by': graphene.String(description='Field to sort by.', default_value=default_sort_col)
         ,'logic': graphene.String(description='and, or', default_value='and')
         ,'sort_dir': graphene.String(description='asc, desc', default_value='asc')
+        
     }
     return type(str(clazz_name), (SQLAlchemyObjectType,), gql_attrs)
 
@@ -118,7 +124,7 @@ def _make_gql_query_fields(cols):
     for row in cols:
         # Only allow queryable types. 
         # set optional 'gql_isqueryable': False in schema.dct to skip
-        if row['isqueryable'] and row['ishidden'] is False:
+        if row['isqueryable'] and row['ishidden'] is False and row['isresolver'] is False:
             gql_attrs[row['name']] = row['type'](row['type_args'] if row['type_args'] else None)
             #gql_attrs[row['name']] = row['type']()
     gql_attrs.update({

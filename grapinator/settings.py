@@ -140,6 +140,7 @@ class SchemaSettings(object):
         else:
             raise TypeError("schema_file arg not set!")
 
+
     def _loadSchemaDict(self, file_name):
         s = open(file_name, 'r').read()
         schema_dict = eval(s)
@@ -152,7 +153,7 @@ class SchemaSettings(object):
                 'name':r['gql_col_name']
                 ,'db_col_name':r['db_col_name']
                 ,'db_type':r['db_type']
-                } for r in row['FIELDS']]
+                } for r in row['FIELDS'] if r['db_col_name']]
             db_class_relation = [{
                 'name':r['rel_name']
                 ,'class_name':r['rel_class_name']
@@ -178,6 +179,8 @@ class SchemaSettings(object):
                 ,'type_args': r['gql_of_type'] if 'gql_of_type' in r else None
                 ,'isqueryable': r['gql_isqueryable'] if 'gql_isqueryable' in r else True
                 ,'ishidden': r['gql_ishidden'] if 'gql_ishidden' in r else False
+                ,'isresolver': r['gql_isresolver'] if 'gql_isresolver' in r else False
+                ,'resolver_func':r['gql_resolver_func'] if 'gql_resolver_func' in r else None
                 } for r in row['FIELDS']]
             gql_class = {
                 'gql_class': row['GQL_CLASS_NAME']
