@@ -22,8 +22,8 @@ WORKDIR $SERVICE_HOME
 # copy service code to SERVICE_HOME
 COPY $DOCKER_RESOURCES/grapinator_service.sh \
 README.md \
-requirements.txt \
-setup.py $SERVICE_HOME/
+setup.cfg \
+pyproject.toml $SERVICE_HOME/
 
 COPY grapinator/ $SERVICE_HOME/grapinator 
 
@@ -32,7 +32,6 @@ RUN apk add --update-cache \
 	curl \
 	libaio \
 	libnsl \
-	openssl-dev \
 	gcc \
 	g++ \
 	make \
@@ -56,10 +55,10 @@ RUN apk add --update-cache \
 && ln -s ${ORACLE_BASE}/libnnz21.so /usr/lib/libnnz21.so \
 && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 \
 && ln -s /lib64/ld-linux-x86-64.so.2 /usr/lib/ld-linux-x86-64.so.2 \
-&& pip install --upgrade pip \
 && echo "Installing grapinator..." \
-&& pip install -r requirements.txt \
-&& python3 setup.py develop \
+&& python3 -m venv venv \
+&& source venv/bin/activate \
+&& pip install -e . \
 && echo "Removing unneeded software for runtime container..." \
 && apk del gcc g++ make musl-dev python3-dev libffi-dev libressl-dev git \
 && rm -rf /var/cache/apk/*

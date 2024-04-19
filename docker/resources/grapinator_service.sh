@@ -3,4 +3,5 @@
 # Proxy service behind a production WSGI server
 
 cd /opt/grapinator
-python3 grapinator/svc_cherrypy.py
+source venv/bin/activate
+python grapinator/svc_cherrypy.py
