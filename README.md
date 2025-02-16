@@ -26,39 +26,35 @@ Allthough I use this code in production at my company, I consider it alpha code.
 
 ## Getting Started
 
-### Demo Prerequisites
-- [docker](https://docs.docker.com/install/)
-- [docker-compose](https://docs.docker.com/compose/install/) 
+### Demo 
 
-### Docker container setup and Employee database demo setup
-- **Note:** Startup the first time will take a bit longer as the employee database is created on initial load.  Look for "Database employeesdb setup complete." in the output of docker-compose before you continue.  Once the contaner is started you can start the [GraphiQL IDE](https://localhost:8443/employees/gql).  See [demo_queries.md](docs/demo_queries.md) for some example queries.
-```sh
-# create employee db container
-docker/docker_build_grapinatordb
+A demo [sqlite database](db/README.md) has been provided using the classic Northwind db. The grapinator [schema definition file](grapinator/resources/northwind_schema.dct) for this demo has been configured for this database.
 
-# create grapinator container
-docker/docker_build_alpine
-
-# run demo grapinator container. This starts employee db too.
-docker-compose -f docker/grapinator.yml up
-```
 ### Development setup
 #### Setup OSX/Linux
 ```
 python -m venv venv
 source venv/bin/activate
 (venv) $ export $(cat .env)
-(venv) $ pip install -r requirements.txt
-(venv) $ python setup.py develop
+(venv) $ pip install -e .
 (venv) $ cd grapinator;python app.py
+```
+
+#### Setup using conda
+```
+conda create -n grapinator python
+conda activate grapinator
+(grapinator) $ conda install cx_Oracle
+(grapinator) $ export $(cat .env)
+(grapinator) $ pip install -e .
+(grapinator) $ cd grapinator;python app.py
 ```
 
 #### Setup Windows
 ```
 python -m venv venv
 venv\Scripts\activate.bat
-(venv) pip install -r requirements.txt
-(venv) python setup.py develop
+(venv) pip install -e .
 (venv) set GQLAPI_CRYPT_KEY=[get key from .env]
 (venv) cd grapinator
 (venv) python app.py

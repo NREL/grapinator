@@ -1,0 +1,274 @@
+[
+    {
+        'GQL_CLASS_NAME': 'Employees'
+        ,'GQL_CONN_CLASS_NAME': 'EmployeesConnection'
+        ,'GQL_CONN_QUERY_NAME': 'employees'
+        ,'DB_CLASS_NAME': 'db_Employees'
+        ,'DB_TABLE_NAME': 'Employees'
+        ,'DB_TABLE_PK': 'EmployeeID'
+        ,'DB_DEFAULT_SORT_COL': 'EmployeeID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'employee_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Employee id (PK).'
+                ,'db_col_name': 'EmployeeID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'first_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee first name.'
+                ,'db_col_name': 'FirstName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'last_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee last name.'
+                ,'db_col_name': 'LastName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'title'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee title.'
+                ,'db_col_name': 'Title'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'title_of_courtesy'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee title of courtesy.'
+                ,'db_col_name': 'TitleOfCourtesy'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'birth_date'
+                ,'gql_type': graphene.DateTime
+                ,'gql_description': 'Employee birth date.'
+                ,'db_col_name': 'BirthDate'
+                ,'db_type': Date
+            },
+            {
+                'gql_col_name': 'hire_date'
+                ,'gql_type': graphene.DateTime
+                ,'gql_description': 'Employee hire date.'
+                ,'db_col_name': 'HireDate'
+                ,'db_type': Date
+            },
+            {
+                'gql_col_name': 'address'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee address.'
+                ,'db_col_name': 'Address'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'city'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee city.'
+                ,'db_col_name': 'City'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'region'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee region.'
+                ,'db_col_name': 'Region'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'postal_code'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee postal code.'
+                ,'db_col_name': 'PostalCode'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'country'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee country.'
+                ,'db_col_name': 'Country'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'home_phone'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee home phone.'
+                ,'db_col_name': 'HomePhone'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'extension'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee extension.'
+                ,'db_col_name': 'Extension'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'notes'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee notes.'
+                ,'db_col_name': 'Notes'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'reports_to'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Employee reports to.'
+                ,'db_col_name': 'ReportsTo'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'photo_path'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Employee photo path.'
+                ,'db_col_name': 'PhotoPath'
+                ,'db_type': String
+            },
+            {
+                'gql_isqueryable': False
+                ,'gql_col_name': 'employee_territories'
+                ,'gql_of_type': 'grapinator.schema.EmployeeTerritories'
+                ,'gql_type': graphene.List
+                ,'gql_description': 'Employee territories.'
+                ,'db_col_name': 'employee_territories'
+                ,'db_type': String
+            },
+        ]
+        ,'RELATIONSHIPS': [
+            {
+                'rel_name': 'employee_territories'
+                ,'rel_class_name': 'db_EmployeeTerritories'
+                ,'rel_arguments': {
+                    'foreign_keys': '[db_EmployeeTerritories.employee_id]'
+                    ,'primaryjoin': 'db_EmployeeTerritories.employee_id == db_Employees.employee_id'
+                    ,'uselist': True
+                }
+            },
+        ]
+    },
+    {
+        'GQL_CLASS_NAME': 'EmployeeTerritories'
+        ,'GQL_CONN_CLASS_NAME': 'EmployeeTerritoriesConnection'
+        ,'GQL_CONN_QUERY_NAME': 'employee_territories'
+        ,'DB_CLASS_NAME': 'db_EmployeeTerritories'
+        ,'DB_TABLE_NAME': 'EmployeeTerritories'
+        ,'DB_TABLE_PK': 'TerritoryID'
+        ,'DB_DEFAULT_SORT_COL': 'TerritoryID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'territory_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Territory id (PK).'
+                ,'db_col_name': 'TerritoryID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'employee_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Employee id.'
+                ,'db_col_name': 'EmployeeID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_isqueryable': False
+                ,'gql_col_name': 'employees'
+                ,'gql_of_type': 'grapinator.schema.Employees'
+                ,'gql_type': graphene.List
+                ,'gql_description': 'Employee assigned to territories.'
+                ,'db_col_name': 'employees'
+                ,'db_type': String
+            },
+            {
+                'gql_isqueryable': False
+                ,'gql_col_name': 'territories'
+                ,'gql_of_type': 'grapinator.schema.Territories'
+                ,'gql_type': graphene.List
+                ,'gql_description': 'Territories.'
+                ,'db_col_name': 'territories'
+                ,'db_type': String
+            },
+        ]
+        ,'RELATIONSHIPS': [
+            {
+                'rel_name': 'employees'
+                ,'rel_class_name': 'db_Employees'
+                ,'rel_arguments': {
+                    'foreign_keys': '[db_Employees.employee_id]'
+                    ,'primaryjoin': 'db_Employees.employee_id == db_EmployeeTerritories.employee_id'
+                    ,'uselist': True
+                }
+            },
+            {
+                'rel_name': 'territories'
+                ,'rel_class_name': 'db_Territories'
+                ,'rel_arguments': {
+                    'foreign_keys': '[db_Territories.territory_id]'
+                    ,'primaryjoin': 'db_Territories.territory_id == db_EmployeeTerritories.territory_id'
+                    ,'uselist': True
+                }
+            },
+        ]
+    },
+    {
+        'GQL_CLASS_NAME': 'Territories'
+        ,'GQL_CONN_CLASS_NAME': 'TerritoriesConnection'
+        ,'GQL_CONN_QUERY_NAME': 'territories'
+        ,'DB_CLASS_NAME': 'db_Territories'
+        ,'DB_TABLE_NAME': 'Territories'
+        ,'DB_TABLE_PK': 'TerritoryID'
+        ,'DB_DEFAULT_SORT_COL': 'TerritoryID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'territory_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Territory id (PK).'
+                ,'db_col_name': 'TerritoryID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'territory_description'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Territory description.'
+                ,'db_col_name': 'TerritoryDescription'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'region_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Region id.'
+                ,'db_col_name': 'RegionID'
+                ,'db_type': Integer
+            },
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'Regions'
+        ,'GQL_CONN_CLASS_NAME': 'RegionsConnection'
+        ,'GQL_CONN_QUERY_NAME': 'regions'
+        ,'DB_CLASS_NAME': 'db_Regions'
+        ,'DB_TABLE_NAME': 'Regions'
+        ,'DB_TABLE_PK': 'RegionID'
+        ,'DB_DEFAULT_SORT_COL': 'RegionID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'region_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Region id.'
+                ,'db_col_name': 'RegionID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'region_description'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Region description.'
+                ,'db_col_name': 'RegionDescription'
+                ,'db_type': String
+            },
+        ]
+        ,'RELATIONSHIPS': []
+    }
+]

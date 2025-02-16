@@ -71,7 +71,7 @@ class Settings(object):
             raise RuntimeError(f"Could not get env key: {err}")
 
         try:
-            # load labor.ini file
+            # load config file
             cwd = path.abspath(path.dirname(__file__))
             properties = cryptoconfigparser.CryptoConfigParser(crypt_key=key)
             properties_file = cwd + self.config_file
@@ -108,11 +108,17 @@ class Settings(object):
             self.FLASK_DEBUG = properties.getboolean('FLASK', 'FLASK_DEBUG')
 
             # load SQLALCHEMY section
-            self.DB_USER = properties.get('SQLALCHEMY', 'DB_USER')
-            self.DB_PASSWORD = properties.get('SQLALCHEMY', 'DB_PASSWORD')
+            self.DB_TYPE = properties.get('SQLALCHEMY', 'DB_TYPE')  
+            if properties.has_option('SQLALCHEMY', 'DB_USER'): 
+                self.DB_USER = properties.get('SQLALCHEMY', 'DB_USER')
+            if properties.has_option('SQLALCHEMY', 'DB_PASSWORD'): 
+                self.DB_PASSWORD = properties.get('SQLALCHEMY', 'DB_PASSWORD')
             self.DB_CONNECT = properties.get('SQLALCHEMY', 'DB_CONNECT')
-            self.DB_TYPE = properties.get('SQLALCHEMY', 'DB_TYPE')
-            self.SQLALCHEMY_DATABASE_URI = f"{self.DB_TYPE}://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_CONNECT}"
+            if 'sqlite' in self.DB_TYPE:
+                self.SQLALCHEMY_DATABASE_URI = f"{self.DB_TYPE}://{self.DB_CONNECT}"
+            else:
+                self.SQLALCHEMY_DATABASE_URI = f"{self.DB_TYPE}://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_CONNECT}"
+            
             self.SQLALCHEMY_TRACK_MODIFICATIONS = properties.getboolean('SQLALCHEMY', 'SQLALCHEMY_TRACK_MODIFICATIONS')
 
             # load GRAPHENE section
