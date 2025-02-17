@@ -5,13 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: debug setup.py develop",
+            "name": "Python: Run grapinator",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/setup.py",
-            "args": [
-                "develop"
-            ],
+            "program": "${workspaceFolder}/grapinator/app.py"
         },
         {
             "name": "Python: Current File",
