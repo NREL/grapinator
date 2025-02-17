@@ -270,5 +270,540 @@
             },
         ]
         ,'RELATIONSHIPS': []
-    }
+    },
+    {
+        'GQL_CLASS_NAME': 'Customers'
+        ,'GQL_CONN_CLASS_NAME': 'CustomersConnection'
+        ,'GQL_CONN_QUERY_NAME': 'customers'
+        ,'DB_CLASS_NAME': 'db_Customers'
+        ,'DB_TABLE_NAME': 'Customers'
+        ,'DB_TABLE_PK': 'CustomerID'
+        ,'DB_DEFAULT_SORT_COL': 'CustomerID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'customer_id'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Customer id.'
+                ,'db_col_name': 'CustomerID'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'company_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Company name.'
+                ,'db_col_name': 'CompanyName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'contact_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact name.'
+                ,'db_col_name': 'ContactName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'contact_title'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact title.'
+                ,'db_col_name': 'ContactTitle'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'address'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact Address.'
+                ,'db_col_name': 'Address'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'city'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact city.'
+                ,'db_col_name': 'City'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'region'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact region.'
+                ,'db_col_name': 'Region'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'postal_code'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact postal code.'
+                ,'db_col_name': 'PostalCode'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'country'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact country.'
+                ,'db_col_name': 'Country'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'phone'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact phone.'
+                ,'db_col_name': 'Phone'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'fax'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact fax.'
+                ,'db_col_name': 'Fax'
+                ,'db_type': String
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'CustomerCustomerDemo'
+        ,'GQL_CONN_CLASS_NAME': 'CustomerCustomerDemoConnection'
+        ,'GQL_CONN_QUERY_NAME': 'customer_customer_demo'
+        ,'DB_CLASS_NAME': 'db_CustomerCustomerDemo'
+        ,'DB_TABLE_NAME': 'CustomerCustomerDemo'
+        ,'DB_TABLE_PK': 'CustomerTypeID, '
+        ,'DB_DEFAULT_SORT_COL': 'CustomerTypeID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'customer_id'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Customer id.'
+                ,'db_col_name': 'CustomerID'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'customer_type_id'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Company type id.'
+                ,'db_col_name': 'CustomerTypeID'
+                ,'db_type': String
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'CustomerDemographics'
+        ,'GQL_CONN_CLASS_NAME': 'CustomerDemographicsConnection'
+        ,'GQL_CONN_QUERY_NAME': 'customer_demographics'
+        ,'DB_CLASS_NAME': 'db_CustomerDemographics'
+        ,'DB_TABLE_NAME': 'CustomerDemographics'
+        ,'DB_TABLE_PK': 'CustomerTypeID, '
+        ,'DB_DEFAULT_SORT_COL': 'CustomerTypeID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'customer_type_id'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Company type id.'
+                ,'db_col_name': 'CustomerTypeID'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'customer_description'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Customer description.'
+                ,'db_col_name': 'CustomerDesc'
+                ,'db_type': String
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'Orders'
+        ,'GQL_CONN_CLASS_NAME': 'OrdersConnection'
+        ,'GQL_CONN_QUERY_NAME': 'orders'
+        ,'DB_CLASS_NAME': 'db_Orders'
+        ,'DB_TABLE_NAME': 'Orders'
+        ,'DB_TABLE_PK': 'OrderID'
+        ,'DB_DEFAULT_SORT_COL': 'OrderID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'order_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Order id.'
+                ,'db_col_name': 'OrderID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'customer_id'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Customer id.'
+                ,'db_col_name': 'CustomerID'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'employee_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Employee id.'
+                ,'db_col_name': 'EmployeeID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'order_date'
+                ,'gql_type': graphene.DateTime
+                ,'gql_description': 'Order date.'
+                ,'db_col_name': 'OrderDate'
+                ,'db_type': Date
+            },
+            {
+                'gql_col_name': 'required_date'
+                ,'gql_type': graphene.DateTime
+                ,'gql_description': 'Required date.'
+                ,'db_col_name': 'RequiredDate'
+                ,'db_type': Date
+            },
+            {
+                'gql_col_name': 'shipped_date'
+                ,'gql_type': graphene.DateTime
+                ,'gql_description': 'Shipped date.'
+                ,'db_col_name': 'ShippedDate'
+                ,'db_type': Date
+            },
+            {
+                'gql_col_name': 'ship_via'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Ship via.'
+                ,'db_col_name': 'ShipVia'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'freight'
+                ,'gql_type': graphene.Float
+                ,'gql_description': 'Ship via.'
+                ,'db_col_name': 'Freight'
+                ,'db_type': Numeric
+            },
+            {
+                'gql_col_name': 'ship_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Ship name.'
+                ,'db_col_name': 'ShipName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'ship_address'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Ship address.'
+                ,'db_col_name': 'ShipAddress'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'ship_city'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Ship city.'
+                ,'db_col_name': 'ShipCity'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'ship_region'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Ship region.'
+                ,'db_col_name': 'ShipRegion'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'ship_postal_code'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Ship postalcode.'
+                ,'db_col_name': 'ShipPostalCode'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'ship_country'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Ship country.'
+                ,'db_col_name': 'ShipCountry'
+                ,'db_type': String
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'OrderDetails'
+        ,'GQL_CONN_CLASS_NAME': 'OrderDetailsConnection'
+        ,'GQL_CONN_QUERY_NAME': 'order_details'
+        ,'DB_CLASS_NAME': 'db_OrderDetails'
+        ,'DB_TABLE_NAME': 'Order Details'
+        ,'DB_TABLE_PK': 'OrderID'
+        ,'DB_DEFAULT_SORT_COL': 'OrderID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'order_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Order id.'
+                ,'db_col_name': 'OrderID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'product_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Product id.'
+                ,'db_col_name': 'ProductID'
+                ,'db_type': Integer
+            },           
+            {
+                'gql_col_name': 'unit_price'
+                ,'gql_type': graphene.Float
+                ,'gql_description': 'Unit price.'
+                ,'db_col_name': 'UnitPrice'
+                ,'db_type': Numeric
+            },
+            {
+                'gql_col_name': 'quantity'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Quantity.'
+                ,'db_col_name': 'Quantity'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'discount'
+                ,'gql_type': graphene.Float
+                ,'gql_description': 'Discount.'
+                ,'db_col_name': 'Discount'
+                ,'db_type': Numeric
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'Shippers'
+        ,'GQL_CONN_CLASS_NAME': 'ShippersConnection'
+        ,'GQL_CONN_QUERY_NAME': 'shippers'
+        ,'DB_CLASS_NAME': 'db_Shippers'
+        ,'DB_TABLE_NAME': 'Shippers'
+        ,'DB_TABLE_PK': 'ShipperID'
+        ,'DB_DEFAULT_SORT_COL': 'ShipperID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'shipper_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Shipper id.'
+                ,'db_col_name': 'ShipperID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'company_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Company name.'
+                ,'db_col_name': 'CompanyName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'phone'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Phone.'
+                ,'db_col_name': 'Phone'
+                ,'db_type': String
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'Products'
+        ,'GQL_CONN_CLASS_NAME': 'ProductsConnection'
+        ,'GQL_CONN_QUERY_NAME': 'products'
+        ,'DB_CLASS_NAME': 'db_Products'
+        ,'DB_TABLE_NAME': 'products'
+        ,'DB_TABLE_PK': 'ProductID'
+        ,'DB_DEFAULT_SORT_COL': 'ProductID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'product_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Product id.'
+                ,'db_col_name': 'ProductID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'product_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Product name.'
+                ,'db_col_name': 'ProductName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'supplier_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Suppler id.'
+                ,'db_col_name': 'SupplierID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'category_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Category id.'
+                ,'db_col_name': 'CategoryID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'quantity_per_unit'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Quantity per unit.'
+                ,'db_col_name': 'QuantityPerUnit'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'unit_price'
+                ,'gql_type': graphene.Float
+                ,'gql_description': 'Unit price.'
+                ,'db_col_name': 'UnitPrice'
+                ,'db_type': Numeric
+            },
+            {
+                'gql_col_name': 'units_in_stock'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Units in stock.'
+                ,'db_col_name': 'UnitsInStock'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'reorder_level'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Reorder level.'
+                ,'db_col_name': 'ReorderLevel'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'discontinued'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Discontinued.'
+                ,'db_col_name': 'Discontinued'
+                ,'db_type': String
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'Categories'
+        ,'GQL_CONN_CLASS_NAME': 'CategoriesConnection'
+        ,'GQL_CONN_QUERY_NAME': 'categories'
+        ,'DB_CLASS_NAME': 'db_Categories'
+        ,'DB_TABLE_NAME': 'Categories'
+        ,'DB_TABLE_PK': 'CategoryID'
+        ,'DB_DEFAULT_SORT_COL': 'CategoryID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'category_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Category id.'
+                ,'db_col_name': 'CategoryID'
+                ,'db_type': Integer
+            },
+            {
+                'gql_col_name': 'category_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Category name.'
+                ,'db_col_name': 'CategoryName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'description'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Description.'
+                ,'db_col_name': 'Description'
+                ,'db_type': String
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
+    {
+        'GQL_CLASS_NAME': 'Suppliers'
+        ,'GQL_CONN_CLASS_NAME': 'SuppliersConnection'
+        ,'GQL_CONN_QUERY_NAME': 'suppliers'
+        ,'DB_CLASS_NAME': 'db_Suppliers'
+        ,'DB_TABLE_NAME': 'Suppliers'
+        ,'DB_TABLE_PK': 'SupplierID'
+        ,'DB_DEFAULT_SORT_COL': 'SupplierID'
+        ,'FIELDS': [
+            {
+                'gql_col_name': 'supplier_id'
+                ,'gql_type': graphene.Int
+                ,'gql_description': 'Supplier id.'
+                ,'db_col_name': 'SupplierID'
+                ,'db_type': Integer
+            },
+           {
+                'gql_col_name': 'company_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Company name.'
+                ,'db_col_name': 'CompanyName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'contact_name'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact name.'
+                ,'db_col_name': 'ContactName'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'contact_title'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact title.'
+                ,'db_col_name': 'ContactTitle'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'address'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact Address.'
+                ,'db_col_name': 'Address'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'city'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact city.'
+                ,'db_col_name': 'City'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'region'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact region.'
+                ,'db_col_name': 'Region'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'postal_code'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact postal code.'
+                ,'db_col_name': 'PostalCode'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'country'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact country.'
+                ,'db_col_name': 'Country'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'phone'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact phone.'
+                ,'db_col_name': 'Phone'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'fax'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Contact fax.'
+                ,'db_col_name': 'Fax'
+                ,'db_type': String
+            },
+            {
+                'gql_col_name': 'home_page'
+                ,'gql_type': graphene.String
+                ,'gql_description': 'Home page.'
+                ,'db_col_name': 'HomePage'
+                ,'db_type': String
+            }
+        ]
+        ,'RELATIONSHIPS': []
+    },
 ]
