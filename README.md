@@ -31,7 +31,7 @@ Allthough I use this code in production at my company, I consider it alpha code.
 A [sqlite database](db/README.md) has been provided using the classic demo Northwind db. A grapinator [schema definition file](grapinator/resources/northwind_schema.dct) for this demo has been configured for this database as a playground and 
 will be invoked during application startup via the default [grapinator.ini](grapinator/resources/grapinator.ini) file.
 
-Follow the build instructions below to get everything up and running.
+Follow the build instructions below to get the playground up and running.  Once app.py is started, you will have a web service up and running on localhost:8443.  You may use the built in [GraphiQL web page](http://localhost:8443/northwind/gql) to try some queries.
 
 ### Development setup
 #### Setup OSX/Linux
@@ -51,16 +51,6 @@ conda activate grapinator
 (grapinator) $ export $(cat .env)
 (grapinator) $ pip install -e .
 (grapinator) $ cd grapinator;python app.py
-```
-
-#### Setup Windows
-```
-python -m venv venv
-venv\Scripts\activate.bat
-(venv) pip install -e .
-(venv) set GQLAPI_CRYPT_KEY=[get key from .env]
-(venv) cd grapinator
-(venv) python app.py
 ```
 
 #### Running unit tests from the command line
